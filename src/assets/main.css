@@ -8,6 +8,7 @@ p {
     align-items: center;
 }
 .item-wrapper {
+    margin: 100px 0 0 0;
     max-width: 800px;
     display: flex;
     gap: 10px;
@@ -47,4 +48,13 @@ input {
 .entry-field-download {
     margin: 20px 0 0 0;
     width: 100%;
+}
+
+.example {
+    margin: 20px 0 0 0;
+}
+
+.example-title {
+    margin: 0 0 10px 0;
+    font-size: 20px;
 }
