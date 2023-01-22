@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import "./assets/main.css"
+import { useState } from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [cars, useCars] = useState([
+        { name: 'Марка', value: 'Мазда'},
+        { name: 'Модель', value: '6'},
+        { name: 'Год выпуска', value: '2020'},
+        { name: 'Количество', value: '6'},
+    ])
+
+    const getLayoutValues = cars.map((item, index) => {
+        return (
+            <div className="items" key={ index }>
+                <p className="items-title">{ item.name }</p>
+                <input type="text" defaultValue={ item.value }/>
+            </div>
+        )
+    })
+
+    return (
+        <div className="App">
+            <div className="item-wrapper">
+                { getLayoutValues }
+            </div>
+
+            <div className="entry-field">
+                <textarea name="" id="" cols="1" rows="1"></textarea>
+                <button>Загрузить</button>
+            </div>
+        </div>
+    );
 }
 
 export default App;
