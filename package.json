@@ -1,6 +1,6 @@
 {
-  "homepage": "https://github.com/Prokhorova-Ri/test-tack.git",
   "name": "test-tack",
+  "homepage": "test-tack",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
