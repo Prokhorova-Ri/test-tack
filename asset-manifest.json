@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/test-tack/static/css/main.1787e955.css",
+    "main.js": "/test-tack/static/js/main.ce7c127d.js",
+    "index.html": "/test-tack/index.html",
+    "main.1787e955.css.map": "/test-tack/static/css/main.1787e955.css.map",
+    "main.ce7c127d.js.map": "/test-tack/static/js/main.ce7c127d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1787e955.css",
+    "static/js/main.ce7c127d.js"
+  ]
+}
