@@ -1,14 +1,14 @@
 import "./assets/main.css"
-import { useState } from "react";
+import {useState} from "react";
 
 function App() {
 
     // Создаем переменную, где будут храниться массив данных
 
     const [data, setData] = useState([
-        { name:"Категория", value:"" },
-        { name:"Наименование", value:"" },
-        { name:"Сумма", value:"" }
+        {name: "Категория", value: ""},
+        {name: "Наименование", value: ""},
+        {name: "Сумма", value: ""}
     ])
 
     // Создаем текстовыю переменную, где будем хранить входящие данные полученные от юзера
@@ -26,7 +26,7 @@ function App() {
     // Полученные обновленные данные мы записываем в наш основной массив
 
     const setNewValues = (payload) => {
-        const { event, index } = payload
+        const {event, index} = payload
 
         let newValue = []
         newValue.push(...data)
@@ -73,11 +73,11 @@ function App() {
 
     const getLayoutValues = data.map((item, index) => {
         return (
-            <div className="items" key={ index }>
-                <p className="items-title">{ item.name }</p>
+            <div className="items" key={index}>
+                <p className="items-title">{item.name}</p>
                 <input type="text"
-                       defaultValue={ item.value }
-                       onChange={(event) => setNewValues({ event, index })}/>
+                       defaultValue={item.value}
+                       onChange={(event) => setNewValues({event, index})}/>
             </div>
         )
     })
@@ -86,13 +86,14 @@ function App() {
     return (
         <div className="App">
             <div className="item-wrapper">
-                { !loading ? getLayoutValues : 'Загрузка данных' }
+                {!loading ? getLayoutValues : 'Загрузка данных'}
             </div>
 
             <div className="entry-field">
                 <div className="entry-field-upload">
-                    <textarea onChange={(event) => saveTextValueFromUser(event)} className="entry-field-upload-textarea" cols="1" rows="1" defaultValue='' />
-                    <button onClick={uploadFile}  className="entry-field-upload-btn">Загрузить</button>
+                    <textarea onChange={(event) => saveTextValueFromUser(event)} className="entry-field-upload-textarea"
+                              cols="1" rows="1" defaultValue=''/>
+                    <button onClick={uploadFile} className="entry-field-upload-btn">Загрузить</button>
                 </div>
                 <button className="entry-field-download" onClick={saveFile}>Сохранить</button>
             </div>
