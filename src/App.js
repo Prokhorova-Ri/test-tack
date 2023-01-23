@@ -1,47 +1,73 @@
 import "./assets/main.css"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function App() {
 
-    const [value, setValue] = useState([])
+    // Создаем переменную с пустым массивом где будут храниться массив данных
+
+    const [data, setData] = useState([])
+
+    // Создаем текстовыю переменную где будем хранить входящие данные полученные от юзера
+
     const [textValue, setTextValue] = useState('')
+
+    // Создаем булевую переменную для перерисовки компонента
+
     const [loading, setLoading] = useState(false)
+
+    // Создаем переменную для примера json
+
     const [example] = useState('[{"name":"Категория", "value":"Простуда и грипп"},{"name":"Наименование", "value":"Леденцы"},{"name":"Сумма", "value":"49 900"}]')
+
+    // Полученные обновленные данные мы записываем в наш основной массив
 
     const setNewValues = (payload) => {
         const { event, index } = payload
+
         let newValue = []
-        newValue.push(...value)
+        newValue.push(...data)
         newValue[index].value = event?.target?.value || []
-        setValue(newValue)
+        setData(newValue)
     }
 
+    // Сохраняем файл (вывод данных в alert)
 
     const saveFile = () => {
-        alert(`Вы сохранили файл с данными \n: ${JSON.stringify(value)}`);
+        alert(`Вы сохранили файл с данными \n: ${JSON.stringify(data)}`);
     }
 
-    const saveMassiveAreaNewValue = (event) => {
+    // Сохраняем текстовые данные полученные от юзера
+
+    const saveTextValueFromUser = (event) => {
         setTextValue(event?.target?.value || [])
     }
+
+    // Делаем перерисовку компонента для отображение обновленной таблицы
+
+    const startRerenderingLayout = () => {
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+        }, 1500)
+    }
+
+    // Полученные данные от юзера в виде текста, переформирую в массив и запишу в data новый массив.
+    // Запускаю функцию ререндер таблицы
+    // Если ошибка, выведу в alert информацию
 
     const uploadFile = () => {
         try {
             const newFormatText = JSON.parse(textValue)
-            setValue(newFormatText)
+            setData(newFormatText)
+            startRerenderingLayout()
         } catch (e) {
             alert('Пожалуйста введите массив правильных JSON объектов')
         }
     }
 
-    useEffect(() => {
-        setLoading(true)
-        setTimeout(() => {
-            setLoading(false)
-        })
-    }, [value])
+    // Формирую верстку наших полей c переменной data.
 
-    const getLayoutValues = value.map((item, index) => {
+    const getLayoutValues = data.map((item, index) => {
         return (
             <div className="items" key={ index }>
                 <p className="items-title">{ item.name }</p>
@@ -61,7 +87,7 @@ function App() {
 
             <div className="entry-field">
                 <div className="entry-field-upload">
-                    <textarea onChange={(event) => saveMassiveAreaNewValue(event)} className="entry-field-upload-textarea" cols="1" rows="1" defaultValue='' />
+                    <textarea onChange={(event) => saveTextValueFromUser(event)} className="entry-field-upload-textarea" cols="1" rows="1" defaultValue='' />
                     <button onClick={uploadFile}  className="entry-field-upload-btn">Загрузить</button>
                 </div>
                 <button className="entry-field-download" onClick={saveFile}>Сохранить</button>
