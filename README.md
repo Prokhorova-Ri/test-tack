@@ -1,3 +1,6 @@
+Тестовая задача: https://prokhorova-ri.github.io/test-tack/
+Ответы на вопросы находятся в файле answer.md
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
